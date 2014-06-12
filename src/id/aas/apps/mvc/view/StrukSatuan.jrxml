@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d40e7643-8548-4c3b-9fc6-8354846548f7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     laundry.`kd_laundry` AS laundry_kd_laundry,
+     laundry.`jenis_layanan` AS laundry_jenis_layanan,
+     laundry.`jenis_pawangi` AS laundry_jenis_pawangi,
+     laundry.`berat` AS laundry_berat,
+     laundry.`jumlah_pakaian` AS laundry_jumlah_pakaian,
+     laundry.`jenis_pakaian` AS laundry_jenis_pakaian,
+     laundry.`harga_satuan` AS laundry_harga_satuan,
+     laundry.`total` AS laundry_total,
+     laundry.`keterangan` AS laundry_keterangan,
+     pelanggan.`id_pelanggan` AS pelanggan_id_pelanggan,
+     pelanggan.`nama` AS pelanggan_nama,
+     pelanggan.`tlp` AS pelanggan_tlp,
+     pelanggan.`alamat` AS pelanggan_alamat,
+     transaksi.`kd_transaksi` AS transaksi_kd_transaksi,
+     transaksi.`kd_laundry` AS transaksi_kd_laundry,
+     transaksi.`id_pelanggan` AS transaksi_id_pelanggan,
+     transaksi.`tgl_terima` AS transaksi_tgl_terima,
+     transaksi.`tgl_selesai` AS transaksi_tgl_selesai,
+     transaksi.`total_tagihan` AS transaksi_total_tagihan,
+     transaksi.`keterangan` AS transaksi_keterangan
+FROM
+     `laundry` laundry INNER JOIN `transaksi` transaksi ON laundry.`kd_laundry` = transaksi.`kd_laundry`
+     INNER JOIN `pelanggan` pelanggan ON transaksi.`id_pelanggan` = pelanggan.`id_pelanggan`
+WHERE
+     jenis_layanan = 'Laundry Satuan'
+ORDER BY
+kd_transaksi desc]]>
+	</queryString>
+	<field name="laundry_kd_laundry" class="java.lang.Integer"/>
+	<field name="laundry_jenis_layanan" class="java.lang.String"/>
+	<field name="laundry_jenis_pawangi" class="java.lang.String"/>
+	<field name="laundry_berat" class="java.lang.Integer"/>
+	<field name="laundry_jumlah_pakaian" class="java.lang.Integer"/>
+	<field name="laundry_jenis_pakaian" class="java.lang.String"/>
+	<field name="laundry_harga_satuan" class="java.lang.Integer"/>
+	<field name="laundry_total" class="java.lang.Integer"/>
+	<field name="laundry_keterangan" class="java.lang.String"/>
+	<field name="pelanggan_id_pelanggan" class="java.lang.Integer"/>
+	<field name="pelanggan_nama" class="java.lang.String"/>
+	<field name="pelanggan_tlp" class="java.lang.String"/>
+	<field name="pelanggan_alamat" class="java.lang.String"/>
+	<field name="transaksi_kd_transaksi" class="java.lang.Integer"/>
+	<field name="transaksi_kd_laundry" class="java.lang.Integer"/>
+	<field name="transaksi_id_pelanggan" class="java.lang.Integer"/>
+	<field name="transaksi_tgl_terima" class="java.sql.Date"/>
+	<field name="transaksi_tgl_selesai" class="java.sql.Date"/>
+	<field name="transaksi_total_tagihan" class="java.lang.Integer"/>
+	<field name="transaksi_keterangan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="0" width="275" height="36" uuid="83ce84e5-6424-4063-9a86-9b3e11d6f4bd"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Struk Transaksi Laundry]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="40" width="327" height="39" uuid="5860d74c-c7d1-49ac-8a59-6026f3521ad2"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Roemah Cemerlang Laundry]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="79" width="483" height="1" uuid="671bf8f1-0b3a-48f0-a00f-c3319d4af0b6"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="399" y="0" width="100" height="20" uuid="b54de01a-5d2f-4b04-b442-e11127cb660b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="499" y="0" width="66" height="20" uuid="104a2fb3-1ed9-4a3b-a9d0-759236b193cb"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="301" splitType="Stretch">
+			<staticText>
+				<reportElement x="43" y="99" width="100" height="20" uuid="5cd948d8-11dd-4001-9eff-885cbc5c9f6b"/>
+				<text><![CDATA[Jenis Pewangi ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="19" width="15" height="20" uuid="6b549643-985b-4dce-b207-3ceb269aea2d"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="99" width="15" height="20" uuid="49151033-0042-4c24-825c-d87db22e1b5f"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="19" width="100" height="20" uuid="a41c8310-449c-4cf3-8ad8-8db3958a467e"/>
+				<text><![CDATA[Kode Transaksi ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="59" width="100" height="20" uuid="cd1d69cd-47b2-435c-b700-c5677be025b5"/>
+				<text><![CDATA[Nama Palangan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="79" width="15" height="20" uuid="78665832-7692-4037-919e-2875bd2c474a"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="39" width="15" height="20" uuid="c5a33f0b-bd81-4005-98f6-885b3895f831"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="143" y="59" width="15" height="20" uuid="932f69d4-61e2-40c0-b7e3-a921f3e059c3"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="79" width="100" height="20" uuid="4a98967f-a9b9-412b-a60b-85fef683bd91"/>
+				<text><![CDATA[Jenis Layanan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="39" width="100" height="20" uuid="d82f001a-3ad3-44ba-b32d-558657a62aca"/>
+				<text><![CDATA[Kode Palanggan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="59" width="100" height="20" uuid="f713ad26-6ac9-4c28-adbb-58d69a8fd78a"/>
+				<text><![CDATA[Ket Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="39" width="15" height="20" uuid="b59aca09-4de7-4ffe-94f5-a8cafc10b12e"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="19" width="100" height="20" uuid="46e93906-6dac-4890-b2b2-688df4e3c900"/>
+				<text><![CDATA[Tanggal Terima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="59" width="15" height="20" uuid="64037130-e37f-46e4-a861-7082a312bb6a"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="39" width="100" height="20" uuid="f898437f-6772-4786-b323-9c73623fcff6"/>
+				<text><![CDATA[Tanggal Selesai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="19" width="15" height="20" uuid="7891ebf6-5052-491c-898b-c73a8c78a23a"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="299" y="222" width="100" height="20" uuid="67e68c24-fe39-4f10-b241-14e993066ea4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Total Tagihan]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="155" width="483" height="1" uuid="1efa18ec-228c-4614-9eff-cc3aef9ee7da"/>
+			</line>
+			<line>
+				<reportElement x="32" y="134" width="483" height="1" uuid="b5e2559e-a30e-4a45-aaa2-b6654b8ee51c"/>
+			</line>
+			<staticText>
+				<reportElement x="53" y="134" width="100" height="20" uuid="5cec060f-4bf0-4a55-a210-b4274fd070e3"/>
+				<text><![CDATA[Items]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="134" width="100" height="20" uuid="56e65c13-6a63-4445-91d3-4ba5d100335d"/>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="134" width="100" height="20" uuid="a7b7a547-3a1a-444d-a3dd-8afe71110d2a"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="204" width="483" height="1" uuid="74296fc6-190b-452d-b4e2-568736d596f3"/>
+			</line>
+			<staticText>
+				<reportElement x="171" y="134" width="100" height="20" uuid="97d1b8ae-4abf-4598-95de-374b568116c1"/>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="281" width="204" height="20" uuid="67499344-2031-45ee-9389-063c66c5c4c3"/>
+				<text><![CDATA[Terimakasih atas kepercayaan anda]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="19" width="100" height="20" uuid="62eba505-f54d-4b28-b20d-637e288e36ca"/>
+				<textFieldExpression><![CDATA[$F{transaksi_kd_transaksi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="39" width="100" height="20" uuid="a5581601-3140-4def-819d-242e059ec7ce"/>
+				<textFieldExpression><![CDATA[$F{transaksi_id_pelanggan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="59" width="100" height="20" uuid="05025bf8-e404-431f-bc50-cc424549ebf7"/>
+				<textFieldExpression><![CDATA[$F{pelanggan_nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="79" width="100" height="20" uuid="fb345ef1-268b-4dd2-b250-67310f0857a5"/>
+				<textFieldExpression><![CDATA[$F{laundry_jenis_layanan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="99" width="100" height="20" uuid="fd18efe7-6266-4889-b83c-9989dfb67e93"/>
+				<textFieldExpression><![CDATA[$F{laundry_jenis_pawangi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="19" width="100" height="20" uuid="e758bf32-351a-4917-b230-eee093f43ba7"/>
+				<textFieldExpression><![CDATA[$F{transaksi_tgl_terima}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="415" y="39" width="100" height="20" uuid="5ffd4909-3365-45e7-9975-1761d928fec4"/>
+				<textFieldExpression><![CDATA[$F{transaksi_tgl_selesai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="59" width="100" height="20" uuid="6a48c810-27f8-4381-8775-9b0c2534418e"/>
+				<textFieldExpression><![CDATA[$F{transaksi_keterangan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="154" width="100" height="20" uuid="7c086a3f-cbd8-4638-828f-1d01cedf0716"/>
+				<textFieldExpression><![CDATA[$F{laundry_jenis_pakaian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="156" width="100" height="20" uuid="7e7dbaa7-ece6-4b70-898e-f7881bdd0baa"/>
+				<textFieldExpression><![CDATA[$F{laundry_harga_satuan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="156" width="100" height="20" uuid="bfc1b62f-6c92-4b9f-9847-b1711c9261c6"/>
+				<textFieldExpression><![CDATA[$F{laundry_jumlah_pakaian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="156" width="100" height="20" uuid="13125171-6457-432a-8db3-27be26168c5a"/>
+				<textFieldExpression><![CDATA[$F{laundry_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="222" width="100" height="20" uuid="5cc83be2-f548-488b-87ae-567201c25ff1"/>
+				<textFieldExpression><![CDATA[$F{transaksi_total_tagihan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
